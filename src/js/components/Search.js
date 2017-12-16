@@ -7,6 +7,7 @@ import FormField from 'grommet/components/FormField'
 import TextInput from 'grommet/components/TextInput'
 import { doSearch, DO_SEARCH, SEARCH_DONE } from '../lib/actions';
 import store from '../lib/store'
+import apihost from '../lib/apihost';
 
 class Search extends Component {
     constructor() {
@@ -51,7 +52,7 @@ class Search extends Component {
         e && e.preventDefault()
         this.props.dispatch({ type: DO_SEARCH })
 
-        const uri = `http://localhost:2727/api/sounds?q=${this.state.query}`
+        const uri = `http://${apihost()}/api/sounds?q=${this.state.query}`
         console.log('doing search:', uri)
         fetch(uri)
         .then(response => response.json())

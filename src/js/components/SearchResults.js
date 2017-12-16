@@ -5,6 +5,7 @@ import Box from 'grommet/components/Box'
 import SearchResult from './SearchResult'
 
 import { Howl } from 'howler'
+import apihost from '../lib/apihost';
 
 class SearchResults extends Component {
     constructor() {
@@ -43,7 +44,7 @@ class SearchResults extends Component {
     }
 
     playResult(result) {
-        const src = result.url.replace('soundyapp.s3.amazonaws.com', 'localhost:2727')
+        const src = result.url.replace('soundyapp.s3.amazonaws.com', apihost())
 
         if (this.state.playing !== null) {
             this.state.playing.stop()
